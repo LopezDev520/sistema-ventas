@@ -253,7 +253,7 @@ public class Principal extends javax.swing.JFrame {
         UIManager.setLookAndFeel(new FlatLightLaf());
         java.awt.EventQueue.invokeLater(() -> new Principal().setVisible(true));
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Admin.AdminPanel adminPanel1;
     private Clientes.ClientesPanel clientesPanel1;
