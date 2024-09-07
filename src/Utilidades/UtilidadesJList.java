@@ -10,6 +10,7 @@ import javax.swing.JList;
 public class UtilidadesJList {
     private static Connection conn = Conector.obtenerConexion();
     
+    // Metodo para llenar un JList a partir de una consulta SQL
     public static void mostrarDatosLista(String sql, JList jList, 
             SetterStatement setter, CreadorObjeto creador) {
         

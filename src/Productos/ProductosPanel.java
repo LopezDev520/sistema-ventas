@@ -14,9 +14,9 @@ public class ProductosPanel extends javax.swing.JPanel {
   }
 
   private void mostrarTablaProductos() {
-    String[] columnas = { "ID", "Nombre", "Precio Venta", "Categoria" };
-    String sql = "SELECT p.id_producto, p.nombre, p.precio_venta, c.nombre FROM producto AS p INNER JOIN categoria AS c ON p.id_categoria = c.id_categoria";
-    Class[] tiposDatosColumna = { Integer.class, String.class, Integer.class, String.class };
+    String[] columnas = { "ID", "Nombre", "Cantidad", "Precio Venta", "Categoria" };
+    String sql = "SELECT p.id_producto, p.nombre, p.cantidad_stock, p.precio_venta, c.nombre FROM producto AS p INNER JOIN categoria AS c ON p.id_categoria = c.id_categoria";
+    Class[] tiposDatosColumna = { Integer.class, String.class, Integer.class, Integer.class, String.class };
     UtilidadesTablas.mostrarTabla(columnas, sql, productosTabla, tiposDatosColumna);
   }
   

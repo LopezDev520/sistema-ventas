@@ -9,9 +9,10 @@ import Utilidades.UtilidadesBD;
 import Utilidades.UtilidadesJList;
 import Utilidades.UtilidadesTablas;
 import java.sql.Date;
+import javax.swing.DefaultListModel;
 
 public class ComprasPanel extends javax.swing.JPanel {
-
+    
     public ComprasPanel() {
         initComponents();
         mostrarTablaCompras();
@@ -61,11 +62,12 @@ public class ComprasPanel extends javax.swing.JPanel {
             stm.setInt(7, idProveedor);
         };
         UtilidadesBD.sql(sql, setter);
+        limpiarCampos();
         NotificadorCambios.notificar();
     }
 
     private void mostrarTablaCompras() {
-        String[] columnas = { "ID", "Producto Comprado", "Precio Compra", "Cantidad", "Comprobante", "Tipo Ingreso", "Proveedor", "Fecha de compra" };
+        String[] columnas = { "ID", "Producto Comprado", "Cantidad", "Precio de venta", "Comprobante", "Tipo Ingreso", "Proveedor", "Fecha de compra" };
         String sql = "SELECT * FROM view_compra";
         Class[] tiposDatos = { Integer.class, String.class, Integer.class, Integer.class, String.class, String.class, String.class, String.class, Date.class };
         UtilidadesTablas.mostrarTabla(columnas, sql, comprasTabla, tiposDatos);
@@ -77,7 +79,15 @@ public class ComprasPanel extends javax.swing.JPanel {
     }
     
     private void limpiarCampos() {
-        // TODO: Limpiar campos
+        productoTxt.setText("");
+        resProductosList.setModel(new DefaultListModel());
+        cantidadTxt.setText("");
+        precioTxt.setText("");
+        comboComprobante.setSelectedIndex(0);
+        numeroTxt.setText("");
+        comboTipoIngreso.setSelectedIndex(0);
+        proveedorTxt.setText("");
+        resProveedorList.setModel(new DefaultListModel());
     }
     
     @SuppressWarnings("unchecked")
@@ -194,6 +204,11 @@ public class ComprasPanel extends javax.swing.JPanel {
 
         limpiarBtn.setBackground(new java.awt.Color(102, 204, 255));
         limpiarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/CarbonClean.png"))); // NOI18N
+        limpiarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarBtnActionPerformed(evt);
+            }
+        });
 
         eliminarBtn.setBackground(new java.awt.Color(255, 0, 102));
         eliminarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/MaterialSymbolsDelete.png"))); // NOI18N
@@ -251,7 +266,7 @@ public class ComprasPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(numeroTxt)
-                            .addComponent(comboTipoIngreso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(comboTipoIngreso, 0, 163, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(guardarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -270,7 +285,7 @@ public class ComprasPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(productoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -282,11 +297,11 @@ public class ComprasPanel extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(precioTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(lblTotal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(comboComprobante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -309,7 +324,8 @@ public class ComprasPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(guardarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(limpiarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(eliminarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(eliminarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         comprasTabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -343,7 +359,7 @@ public class ComprasPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -385,6 +401,10 @@ public class ComprasPanel extends javax.swing.JPanel {
         realizarCompra(idProductoComprado, cantidadComprada, precioCompra, comprobante, tipoIngreso, numero, idProveedor);
         mostrarTablaCompras();
     }//GEN-LAST:event_guardarBtnActionPerformed
+
+    private void limpiarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarBtnActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_limpiarBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscarProductoBtn;

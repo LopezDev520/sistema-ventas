@@ -13,9 +13,9 @@ public class Conector {
         Connection conn = null;
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            // URL para la conexion a la BD
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventario", "root", "");
-        } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }

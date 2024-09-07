@@ -227,6 +227,7 @@ public class ClientesPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_limpiarBtnActionPerformed
 
     private void eliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtnActionPerformed
+        // Lanzo un dialogo de confirmacion de eliminacion
         DeleteConfirmDialog confirmDelete = new DeleteConfirmDialog(null, "Desea eliminar este dato?");
         confirmDelete.setVisible(true);
         if (!confirmDelete.isAceptado()) return;

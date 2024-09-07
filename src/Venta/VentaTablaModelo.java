@@ -18,6 +18,8 @@ public class VentaTablaModelo extends AbstractTableModel {
         "Total"
     };
     
+    // Agregar producto a la lista de compra, verifica si la cantidad es valida
+    // y si está disponible en el Stock
     public void agregarProductoACarrito(Producto p, int cantidad) {
         if (cantidad <= 0) {
             JOptionPane.showMessageDialog(null, "No puede comprar 0 o menos cantidades");

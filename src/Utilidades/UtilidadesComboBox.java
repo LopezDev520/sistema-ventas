@@ -11,6 +11,7 @@ import java.sql.*;
 public class UtilidadesComboBox {
     private static Connection conn = Conector.obtenerConexion();
     
+    // Metodo para llenar un ComboBox a partir de una consulta SQL
     public static void mostrarDatosComboBox(String sql, JComboBox comboBox, CreadorObjeto creador) {
         comboBox.removeAllItems();
 

@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 public class UtilidadesBD {
     public static Connection conn = Conector.obtenerConexion();
     
+    // Meotod para ejecutar una consulta SQL INSERT, UPDATE o DELETE
     public static void sql(String sqlQuery, SetterStatement setterStatement) {
         try (PreparedStatement stm = conn.prepareStatement(sqlQuery)) {
             setterStatement.settearDatosStatement(stm);

@@ -9,6 +9,7 @@ public class DeleteConfirmDialog extends javax.swing.JDialog {
         super(parent, true);
         initComponents();
         
+        setTitle("Está seguro de que desea eliminar?");
         lblMsg.setText(msg);
         
         if (parent == null) {

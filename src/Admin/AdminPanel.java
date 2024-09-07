@@ -24,6 +24,8 @@ public class AdminPanel extends javax.swing.JPanel {
     productoTabla.getSelectionModel().addListSelectionListener(this::productoTablaListener);
     usuarioTabla.getSelectionModel().addListSelectionListener(this::usuarioTablaListener);
     
+    // Añadiendo el metodo "mostrarTablaProductos" al notificador, de forma que
+    // pueda ser llamado desde otra clase
     NotificadorCambios.registrarNotificacion(this::mostrarTablaProductos);
   }
 
@@ -56,6 +58,8 @@ public class AdminPanel extends javax.swing.JPanel {
 
   private void categoriaTablaListener(ListSelectionEvent e) {
     int fila = categoriaTabla.getSelectedRow();
+    // Se mira si la fila es diferente de -1, significa que hay un dato seleccionado
+    // en la tabla
     if (fila != -1) {
       eliminarCategoriaBtn.setEnabled(true);
       nombreCategoriaTxt.setText(((String) categoriaTabla.getValueAt(fila, 1)));
@@ -292,8 +296,7 @@ public class AdminPanel extends javax.swing.JPanel {
         guardarCategoriaBtn.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         guardarCategoriaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/MdiFloppy.png"))); // NOI18N
         guardarCategoriaBtn.setText("Guardar categoria");
-        guardarCategoriaBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        guardarCategoriaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardarCategoriaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         guardarCategoriaBtn.setIconTextGap(10);
         guardarCategoriaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,8 +308,7 @@ public class AdminPanel extends javax.swing.JPanel {
         limpiarCategoriaBtn.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         limpiarCategoriaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/CarbonClean.png"))); // NOI18N
         limpiarCategoriaBtn.setText("Limpiar campos");
-        limpiarCategoriaBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        limpiarCategoriaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        limpiarCategoriaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         limpiarCategoriaBtn.setIconTextGap(10);
         limpiarCategoriaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,8 +320,7 @@ public class AdminPanel extends javax.swing.JPanel {
         eliminarCategoriaBtn.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         eliminarCategoriaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/MaterialSymbolsDelete.png"))); // NOI18N
         eliminarCategoriaBtn.setText("Eliminar dato seleccionado");
-        eliminarCategoriaBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        eliminarCategoriaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminarCategoriaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         eliminarCategoriaBtn.setEnabled(false);
         eliminarCategoriaBtn.setIconTextGap(10);
         eliminarCategoriaBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -348,14 +349,14 @@ public class AdminPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(eliminarCategoriaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(eliminarCategoriaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(limpiarCategoriaBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(guardarCategoriaBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nombreCategoriaTxt, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -396,7 +397,7 @@ public class AdminPanel extends javax.swing.JPanel {
         guardarProductoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/MdiFloppy.png"))); // NOI18N
         guardarProductoBtn.setText("Guardar producto");
         guardarProductoBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        guardarProductoBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardarProductoBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         guardarProductoBtn.setIconTextGap(10);
         guardarProductoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -409,7 +410,7 @@ public class AdminPanel extends javax.swing.JPanel {
         limpiarProductoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/CarbonClean.png"))); // NOI18N
         limpiarProductoBtn.setText("Limpiar campos");
         limpiarProductoBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        limpiarProductoBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        limpiarProductoBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         limpiarProductoBtn.setIconTextGap(10);
         limpiarProductoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -422,7 +423,7 @@ public class AdminPanel extends javax.swing.JPanel {
         eliminarProductoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/MaterialSymbolsDelete.png"))); // NOI18N
         eliminarProductoBtn.setText("Eliminar dato seleccionado");
         eliminarProductoBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        eliminarProductoBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminarProductoBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         eliminarProductoBtn.setEnabled(false);
         eliminarProductoBtn.setIconTextGap(10);
         eliminarProductoBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -513,7 +514,7 @@ public class AdminPanel extends javax.swing.JPanel {
         guardarUsuarioBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/MdiFloppy.png"))); // NOI18N
         guardarUsuarioBtn.setText("Guardar usuario");
         guardarUsuarioBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        guardarUsuarioBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardarUsuarioBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         guardarUsuarioBtn.setIconTextGap(10);
         guardarUsuarioBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -526,7 +527,7 @@ public class AdminPanel extends javax.swing.JPanel {
         limpiarUsuarioBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/CarbonClean.png"))); // NOI18N
         limpiarUsuarioBtn.setText("Limpiar campos");
         limpiarUsuarioBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        limpiarUsuarioBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        limpiarUsuarioBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         limpiarUsuarioBtn.setIconTextGap(10);
         limpiarUsuarioBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -539,7 +540,7 @@ public class AdminPanel extends javax.swing.JPanel {
         eliminarUsuarioBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Imagenes/MaterialSymbolsDelete.png"))); // NOI18N
         eliminarUsuarioBtn.setText("Eliminar dato seleccionado");
         eliminarUsuarioBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        eliminarUsuarioBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminarUsuarioBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         eliminarUsuarioBtn.setEnabled(false);
         eliminarUsuarioBtn.setIconTextGap(10);
         eliminarUsuarioBtn.addActionListener(new java.awt.event.ActionListener() {
